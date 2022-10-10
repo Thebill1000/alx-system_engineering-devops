@@ -1,0 +1,2 @@
+#!/bin/bash
+fi -type d -not -name . | wc -|
