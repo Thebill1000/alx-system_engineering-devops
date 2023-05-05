@@ -1,4 +1,4 @@
-#!usr/bin/env bash
+#!/usr/bin/env bash
 #finding the issue with the port and fixing it
 
 sed -i 's/8080/80/g' /etc/nginx/sites-enabled/default
