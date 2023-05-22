@@ -1,10 +1,9 @@
 #!/usr/bin/python3
-"""Returns to-do list information for a given employee ID."""
-import requests
-import sys
+"""Returns to-do list information for a given employee"""
+if __name__ == "__main__":
+    import requests
+    from sys import argv
 
-    if __name__ == "__main__":
-    
     url = 'https://jsonplaceholder.typicode.com/users/{}'.format(argv[1])
     employee = requests.get(url).json().get('name')
 
