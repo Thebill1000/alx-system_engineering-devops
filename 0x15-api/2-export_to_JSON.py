@@ -1,12 +1,12 @@
 #!/usr/bin/python3
 """
- a Python script that, using this REST API, for a given employee ID, - export data in the
-CSV format.
-"""
+ a Python script that, using this REST API,- export data in
+json format."""
+
 if __name__ == "__main__":
     from sys import argv
-    import csv
     import requests
+    import json
 
     url = 'https://jsonplaceholder.typicode.com/users/{}'.format(argv[1])
     employee = requests.get(url).json().get('username')
@@ -14,9 +14,9 @@ if __name__ == "__main__":
     url_todo = 'https://jsonplaceholder.typicode.com/todos?userId={}'.format(
         argv[1])
     todos = requests.get(url_todo).json()
-    data = [[argv[1], employee, todo.get('completed'), todo.get('title')]
-            for todo in todos]
+    value = [{'task': todo.get('title'), 'completed': todo.get('completed'),
+              'username': employee} for todo in todos]
+    data = {argv[1]: value}
 
-    with open('{}.csv'.format(argv[1]), 'w') as f:
-        writer = csv.writer(f, quoting=csv.QUOTE_ALL)
-        writer.writerows(data)
+    with open('{}.json'.format(argv[1]), 'w') as f:
+        json.dump(data, f)
