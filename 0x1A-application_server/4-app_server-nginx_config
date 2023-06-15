@@ -13,12 +13,12 @@ server {
 
     # Serve /airbnb-onepage/ route on AirBnB_clone_v3
     location = /airbnb-onepage/ {
-        proxy_pass http://127.0.0.1:5000/airbnb-onepage/;
+        proxy_pass http://100.26.230.248:5000/airbnb-onepage/;
     }
 
     # Serve /number_odd_or_even/ route on AirBnB_clone_v3
     location ~ /airbnb-dynamic/number_odd_or_even/(\d+)$ {
-        proxy_pass http://127.0.0.1:5001/number_odd_or_even/$1;
+        proxy_pass http://100.26.230.248:5001/number_odd_or_even/$1;
     }
 
     # Serve API on AirBnB_clone_v3
